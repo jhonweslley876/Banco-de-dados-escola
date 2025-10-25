@@ -42,6 +42,7 @@ def atualizar(id, nome, idade, curso):
 def excluir():
     conexão = conectar()
     cursor = conexão.cursor()
-    cursor.execute('DELETE FROM alunos WHERE id=?', (id))
+    cursor.execute('DELETE FROM alunos WHERE id=?', (id,))
     conexão.commit()
+
     conexão.close()
