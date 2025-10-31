@@ -39,10 +39,36 @@ def atualizar(id, nome, idade, curso):
     conexão.commit()
     conexão.close()
 
-def excluir():
+def excluir(id):
     conexão = conectar()
     cursor = conexão.cursor()
     cursor.execute('DELETE FROM alunos WHERE id=?', (id,))
     conexão.commit()
-
     conexão.close()
+
+criar_tabela()
+
+while True:
+    print('\n------MENU------')
+    print('1 - Inserir aluno')
+    print('2 - Listar alunos')
+    print('3 - Atualizar')
+    print('4 - Excluir aluno')
+    print('0 - Sair')
+
+    opção = input('Faça sua escolha: ')
+
+    if opção == '1':
+        nome = input('Nome: ')
+        idade = int(input('Idade: '))
+        curso = input('Curso: ')
+        inserir(nome, idade, curso)
+
+    elif opção == '2':
+        listar()
+    elif opção == '3':
+        id = int(input('ID do aluno: '))
+        nome = input('Novo nome: ')
+        idade = int(input('Nova idade'))
+        curso = input('Novo curso: ')
+        atualizar(id, nome, idade, curso)
